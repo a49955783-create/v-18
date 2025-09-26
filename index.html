@@ -1,69 +1,58 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>مستشفى ريسبكت</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- شاشة المقدمة -->
   <section id="intro" class="intro-screen">
     <div class="intro-card">
-      <h1>مرحباً بك في <span>مستشفى ريسبكت</span></h1>
+      <h1><img src="gold-logo.png" class="gold-logo" alt=""> مستشفى ريسبكت</h1>
       <p>اختر نوع الدخول</p>
       <div class="intro-actions">
         <button class="btn btn-primary" onclick="login('admin')">مشرفين الصحة والإدارة</button>
-        <button class="btn btn-ghost" onclick="login('viewer')">أفراد الصحة (عرض فقط)</button>
+        <button class="btn" onclick="login('viewer')">أفراد الصحة (عرض فقط)</button>
       </div>
-      <small class="hint">ملاحظة: كلمة المرور للمشرفين هي <b>20025</b></small>
     </div>
   </section>
 
-  <!-- الصفحة الرئيسية -->
+  <!-- التطبيق -->
   <main id="app" class="hidden">
     <header class="header">
-      <div class="brand">
-        <img src="logo.png" alt="الشعار" class="logo" />
-        <h2 class="title">مستشفى ريسبكت</h2>
-      </div>
-
-      <div class="search-wrap">
-        <span class="icon">🔎</span>
-        <input id="search" type="text" placeholder="ابحث بالاسم أو الرقم الوطني" oninput="searchRecords()" />
-      </div>
-
-      <div class="header-actions">
-        <button id="addBtn" class="btn btn-primary" onclick="openAddModal()">إضافة</button>
-        <button id="deleteAllBtn" class="btn btn-danger" onclick="confirmDeleteAll()">حذف الكل</button>
-      </div>
+      <h2 class="brand"><img src="gold-logo.png" class="gold-logo" alt=""> مستشفى ريسبكت</h2>
+      <nav class="filters" id="filters">
+        <button class="chip active" data-cat="all" onclick="filterCategory('all')">الكل</button>
+        <button class="chip chip-silver" data-cat="فضي" onclick="filterCategory('فضي')">فضي</button>
+        <button class="chip chip-gold" data-cat="ذهبي" onclick="filterCategory('ذهبي')">ذهبي</button>
+        <button class="chip chip-platinum" data-cat="بلاتيني" onclick="filterCategory('بلاتيني')">بلاتيني</button>
+        <button class="chip chip-expired" data-cat="منتهي" onclick="filterCategory('منتهي')">منتهي</button>
+      </nav>
     </header>
 
-    <nav class="filters">
-      <button class="chip" data-cat="all" onclick="filterCategory('all')">الكل</button>
-      <button class="chip chip-silver" data-cat="فضي" onclick="filterCategory('فضي')">فضي</button>
-      <button class="chip chip-gold" data-cat="ذهبي" onclick="filterCategory('ذهبي')">ذهبي</button>
-      <button class="chip chip-platinum" data-cat="بلاتيني" onclick="filterCategory('بلاتيني')">بلاتيني</button>
-      <button class="chip chip-expired" data-cat="منتهي" onclick="filterCategory('منتهي')">منتهي</button>
-    </nav>
+    <section class="actions">
+      <button id="addBtn" class="btn btn-primary" onclick="openForm()">➕ إضافة</button>
+      <input id="search" type="text" placeholder="ابحث بالاسم أو الرقم الوطني" oninput="searchRecords()" />
+      <button id="deleteAllBtn" class="btn btn-danger" onclick="confirmDeleteAll()">🗑 حذف الكل</button>
+    </section>
 
     <section id="cards" class="cards"></section>
-
-    <footer class="footer">© <span id="year"></span> مستشفى ريسبكت</footer>
   </main>
 
-  <!-- نافذة إضافة/تعديل -->
-  <div id="modal" class="modal hidden" aria-hidden="true">
-    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" aria-label="إغلاق" onclick="closeModal()">×</button>
+  <!-- نموذج إضافة/تعديل -->
+  <div id="formModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" aria-label="إغلاق" onclick="closeForm()">×</button>
       <h3 id="modalTitle">إضافة بيانات التأمين</h3>
-      <form id="insuranceForm">
+      <form id="form">
         <input type="hidden" id="editIndex" value="">
         <label>الاسم</label>
-        <input id="name" type="text" required placeholder="الاسم الثلاثي" />
+        <input id="name" type="text" required placeholder="الاسم الكامل">
 
         <label>الرقم الوطني</label>
-        <input id="id" type="text" inputmode="numeric" required placeholder="مثال: 1234567890" />
+        <input id="nid" type="text" required placeholder="مثال: 1234567890" inputmode="numeric">
 
         <label>الفئة</label>
         <select id="category">
@@ -73,23 +62,28 @@
         </select>
 
         <label>تاريخ الانتهاء</label>
-        <input id="expiry" type="date" required />
+        <input id="expiry" type="date" required>
 
         <label>الصورة</label>
-        <input id="image" type="file" accept="image/*" />
+        <input id="image" type="file" accept="image/*">
 
         <div class="form-actions">
-          <button type="button" class="btn btn-ghost" onclick="closeModal()">إلغاء</button>
+          <button type="button" class="btn" onclick="closeForm()">إلغاء</button>
           <button type="submit" class="btn btn-primary">حفظ</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- عرض الصورة -->
+  <!-- تكبير الصورة -->
   <div id="imageModal" class="modal hidden">
-    <button class="modal-close" aria-label="إغلاق" onclick="closeImageModal()">×</button>
-    <img id="largeImage" src="" alt="صورة">
+    <div class="modal-image">
+      <button class="modal-close right" aria-label="إغلاق" onclick="closeImage()">×</button>
+      <img id="largeImage" src="" alt="صورة">
+      <div class="image-actions">
+        <button id="removeBtn" class="btn btn-danger" onclick="confirmRemoveVisible()">إزالة</button>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
