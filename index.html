@@ -7,11 +7,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- شاشة البداية -->
   <div id="intro-screen" class="intro-screen">
     <div class="intro-content">
       <h1>مرحباً بك في <img src="gold-logo.png" class="gold-logo"> مستشفى ريسبكت</h1>
-      <p>اختر نوع الدخول</p>
       <div class="buttons">
         <button onclick="login('admin')">مشرفين الصحة والإدارة</button>
         <button onclick="login('user')">أفراد الصحة (عرض فقط)</button>
@@ -19,13 +17,12 @@
     </div>
   </div>
 
-  <!-- واجهة النظام -->
   <div id="app" style="display:none;">
     <header>
       <h2><img src="gold-logo.png" class="gold-logo"> مستشفى ريسبكت</h2>
       <nav id="filters">
         <button onclick="filterCards('all')" class="active">الكل</button>
-        <button onclick="filterCards('فني')">فني</button>
+        <button onclick="filterCards('فضي')">فضي</button>
         <button onclick="filterCards('ذهبي')">ذهبي</button>
         <button onclick="filterCards('بلاتيني')">بلاتيني</button>
         <button onclick="filterCards('منتهي')">منتهي</button>
@@ -35,15 +32,13 @@
     <main>
       <div class="actions">
         <button onclick="openForm()">إضافة</button>
-        <input type="text" id="search" placeholder="بحث بالاسم أو رقم الهوية" onkeyup="searchCards()">
+        <input type="text" id="search" placeholder="ابحث بالاسم أو الرقم الوطني" onkeyup="searchCards()">
         <button onclick="clearAll()">حذف الكل</button>
       </div>
-
       <div id="cards-container" class="cards"></div>
     </main>
   </div>
 
-  <!-- فورم إضافة -->
   <div id="form-modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeForm()">&times;</span>
@@ -55,7 +50,7 @@
         <input type="text" id="nationalId" required>
         <label>الفئة:</label>
         <select id="category">
-          <option value="فني">فني</option>
+          <option value="فضي">فضي</option>
           <option value="ذهبي">ذهبي</option>
           <option value="بلاتيني">بلاتيني</option>
         </select>
@@ -68,10 +63,12 @@
     </div>
   </div>
 
-  <!-- تكبير الصورة -->
   <div id="image-modal" class="image-modal">
     <span class="close" onclick="closeImage()">&times;</span>
     <img id="modal-img" src="">
+    <div class="image-actions">
+      <button onclick="confirmRemoveVisible()" class="btn-danger">إزالة</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
