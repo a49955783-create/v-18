@@ -1,68 +1,90 @@
-*{box-sizing:border-box} html,body{height:100%}
-body{margin:0;font-family:'Tajawal',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#0e1115;color:#e6eaf2}
-.hidden{display:none!important}
-
-.intro-screen{position:fixed;inset:0;display:grid;place-items:center;background:radial-gradient(1200px 600px at 50% -10%,#1b2230 0,#0e1115 60%);z-index:900}
-.intro-card{background:#151a22;border:1px solid #2a3240;border-radius:16px;padding:28px 22px;max-width:560px;width:92%;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.35)}
-.intro-card h1{margin:.2rem 0 0.2rem;font-size:1.6rem}
-.intro-card h1 span{color:#bfa75e}
-.intro-card p{opacity:.85;margin:.2rem 0 .8rem}
-.intro-actions{display:flex;gap:10px;justify-content:center;margin:.5rem 0 0.2rem}
-.hint{opacity:.6}
-
-.header{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:12px;align-items:center;padding:12px 16px;background:#121722;border-bottom:1px solid #2a3240;position:sticky;top:0;z-index:50}
-.brand{display:flex;align-items:center;gap:8px}
-.logo{width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 0 6px rgba(191,167,94,.3))}
-.title{margin:0;font-size:1.2rem;color:#e9edf6}
-.search-wrap{display:flex;align-items:center;gap:8px;background:#1a2130;border:1px solid #2a3240;border-radius:999px;padding:6px 12px}
-.search-wrap .icon{opacity:.8}
-.search-wrap input{flex:1;min-width:160px;background:transparent;border:0;color:#dbe3f1;font-size:.95rem;outline:none}
-.header-actions{display:flex;gap:8px;justify-content:flex-end}
-
-.filters{display:flex;gap:8px;justify-content:flex-end;padding:12px 16px}
-.chip{border:1px solid transparent;background:transparent;color:#fff;border-radius:999px;padding:6px 14px;cursor:pointer;transition:.25s;font-weight:600}
-.chip:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.25)}
-.chip-silver:hover{background:linear-gradient(135deg,#8f9094,#b4b5b8);color:#0b0b0b}
-.chip-gold:hover{background:linear-gradient(135deg,#bfa75e,#f2d16b);color:#0b0b0b}
-.chip-platinum:hover{background:linear-gradient(135deg,#4a89c2,#9fd0ff);color:#0b0b0b}
-.chip-expired:hover{background:linear-gradient(135deg,#962b2b,#d24a4a);color:#fff}
-.chip:hover{border-color:rgba(255,255,255,0.04)}
-
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:10px 16px 80px}
-.card{background:#121722;border:1px solid #2a3240;border-radius:12px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.25)}
-.card .figure{position:relative;background:#0d121b;padding:8px}
-.card img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;cursor:zoom-in;border-radius:6px}
-.badge{position:absolute;top:12px;left:12px;background:#e14b4b;color:#fff;padding:6px 12px;border-radius:999px;font-size:.82rem;box-shadow:0 6px 12px rgba(225,75,75,.35)}
-.card .content{padding:10px 12px;text-align:right}
-.key{opacity:.75;color:#9fb0c7}
-.row{display:flex;gap:10px;justify-content:space-between;align-items:center}
-.meta{display:grid;gap:6px;margin-top:6px}
-.countdown{margin-top:6px;font-weight:700}
-.countdown.red{color:#ff6d6d}
-.card .actions{display:flex;gap:8px;margin-top:10px;justify-content:flex-start}
-
-.btn{border:1px solid #2a3240;background:#1a2130;color:#e6eaf2;border-radius:10px;padding:8px 14px;cursor:pointer;transition:.15s}
-.btn:hover{transform:translateY(-1px);box-shadow:0 8px 16px rgba(0,0,0,.25)}
-.btn-primary{background:#6a4bff;border-color:#6a4bff}
-.btn-danger{background:#ce3a3a;border-color:#ce3a3a}
-.btn-ghost{background:transparent;border-color:#2a3240}
-
-.modal{position:fixed;inset:0;background:rgba(5,8,12,.78);display:grid;place-items:center;z-index:1000}
-.modal-content{background:#121722;border:1px solid #2a3240;border-radius:14px;padding:18px 16px;min-width:320px;max-width:94vw;position:relative}
-.modal-close{position:absolute;top:14px;left:14px;background:#1a2130;border:1px solid #2a3240;border-radius:999px;width:34px;height:34px;color:#dbe3f1;cursor:pointer}
-#imageModal{place-items:center}
-#imageModal img{max-width:92vw;max-height:80vh;border-radius:12px;border:1px solid #2a3240;box-shadow:0 12px 40px rgba(0,0,0,.5)}
-
-#insuranceForm{display:grid;gap:8px}
-#insuranceForm input,#insuranceForm select{background:#0f1520;border:1px solid #2a3240;border-radius:10px;padding:10px;color:#e6eaf2;outline:none}
-.form-actions{display:flex;justify-content:flex-start;gap:8px;margin-top:6px}
-
-.footer{text-align:center;opacity:.7;padding:24px}
-
-@media (max-width: 880px){
-  .header{grid-template-columns:1fr;gap:8px}
-  .header-actions{justify-content:center}
-  .filters{justify-content:center;flex-wrap:wrap}
-  .cards{grid-template-columns:1fr;padding:12px}
-  .card{border-radius:10px}
+body {
+  background: #111;
+  color: #fff;
+  font-family: Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+header {
+  background: #1e1e1e;
+  padding: 10px;
+}
+.gold-logo {
+  width: 30px;
+  vertical-align: middle;
+}
+nav button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  margin: 0 5px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+nav button:hover {
+  background: #444;
+  color: gold;
+}
+nav button.active {
+  background: #222;
+  border: 1px solid gold;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+.card {
+  background: #1c1c1c;
+  border-radius: 10px;
+  width: 220px;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+}
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.card button {
+  margin: 5px;
+}
+.modal, .image-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+}
+.modal-content {
+  background: #222;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+}
+.close {
+  color: red;
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+button {
+  background: purple;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+button:hover {
+  background: darkviolet;
 }
