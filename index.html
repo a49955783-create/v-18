@@ -7,9 +7,10 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- شاشة المقدمة -->
   <div id="intro-screen" class="intro-screen">
     <div class="intro-content">
-      <h1>مرحباً بك في <img src="gold-logo.png" class="gold-logo"> مستشفى ريسبكت</h1>
+      <h1><img src="gold-logo.png" class="gold-logo"> مستشفى ريسبكت</h1>
       <div class="buttons">
         <button onclick="login('admin')">مشرفين الصحة والإدارة</button>
         <button onclick="login('user')">أفراد الصحة (عرض فقط)</button>
@@ -17,6 +18,7 @@
     </div>
   </div>
 
+  <!-- التطبيق -->
   <div id="app" style="display:none;">
     <header>
       <h2><img src="gold-logo.png" class="gold-logo"> مستشفى ريسبكت</h2>
@@ -31,18 +33,19 @@
 
     <main>
       <div class="actions">
-        <button onclick="openForm()">إضافة</button>
+        <button onclick="openForm()">➕ إضافة</button>
         <input type="text" id="search" placeholder="ابحث بالاسم أو الرقم الوطني" onkeyup="searchCards()">
-        <button onclick="clearAll()">حذف الكل</button>
+        <button onclick="clearAll()">🗑️ حذف الكل</button>
       </div>
       <div id="cards-container" class="cards"></div>
     </main>
   </div>
 
+  <!-- نافذة النموذج -->
   <div id="form-modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeForm()">&times;</span>
-      <h3>إضافة بيانات التأمين</h3>
+      <h3>بيانات التأمين</h3>
       <form id="insurance-form">
         <label>الاسم:</label>
         <input type="text" id="name" required>
@@ -58,11 +61,12 @@
         <input type="date" id="expiryDate" required>
         <label>الصورة:</label>
         <input type="file" id="image" accept="image/*">
-        <button type="submit">حفظ</button>
+        <button type="submit">💾 حفظ</button>
       </form>
     </div>
   </div>
 
+  <!-- نافذة تكبير الصورة -->
   <div id="image-modal" class="image-modal">
     <span class="close" onclick="closeImage()">&times;</span>
     <img id="modal-img" src="">

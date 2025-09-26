@@ -1,17 +1,26 @@
-body {background:#111;color:#fff;font-family:Tahoma,sans-serif;margin:0;padding:0;text-align:center}
-header{background:#1e1e1e;padding:10px}
-.gold-logo{width:26px;vertical-align:middle}
+body{background:#111;color:#fff;font-family:Tahoma,sans-serif;margin:0;padding:0}
+header{background:#1e1e1e;padding:10px;text-align:center}
+.gold-logo{width:26px;vertical-align:middle;margin-left:6px}
+nav{margin-top:10px}
 nav button{background:transparent;border:none;color:#fff;margin:0 5px;padding:6px 12px;border-radius:8px;cursor:pointer}
 nav button:hover{background:#333}
 .cards{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;padding:20px}
-.card{background:#1c1c1c;border-radius:10px;width:200px;text-align:center;padding:10px;position:relative}
+.card{background:#1c1c1c;border-radius:10px;width:220px;text-align:center;padding:10px;position:relative}
 .card img{width:100%;height:130px;object-fit:cover;border-radius:8px;cursor:pointer}
-.card button{margin:5px}
+.card button{margin:5px;padding:5px 10px;border:none;border-radius:6px;cursor:pointer}
+.card .edit{background:#2980b9;color:#fff}
+.card .delete{background:#c0392b;color:#fff}
 .progress{width:100%;height:8px;border-radius:5px;background:#333;margin-top:5px}
 .progress-bar{height:100%;border-radius:5px}
 .modal,.image-modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.85)}
-.modal-content{background:#222;margin:10% auto;padding:20px;border-radius:10px;width:300px}
+.modal-content{background:#222;margin:10% auto;padding:20px;border-radius:10px;width:300px;color:#fff}
 .close{color:red;float:right;font-size:24px;cursor:pointer}
 .image-modal img{max-width:90%;max-height:80%;margin-top:40px;border-radius:10px}
 .image-actions{margin-top:10px}
 .btn-danger{background:#d33;color:#fff;border:none;padding:6px 12px;border-radius:6px;cursor:pointer}
+.actions{margin:15px;text-align:center}
+.actions input{padding:6px 12px;border-radius:8px;border:none}
+.intro-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:#111;z-index:2000;display:flex;align-items:center;justify-content:center}
+.intro-content{text-align:center}
+.intro-content h1{margin-bottom:20px}
+.intro-content .buttons button{margin:5px;padding:10px 20px;border:none;border-radius:8px;cursor:pointer;background:#333;color:#fff}
