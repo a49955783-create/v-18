@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- شاشة المقدمة -->
   <section id="intro" class="intro-screen">
     <div class="intro-card">
       <h1>مرحباً بك في <span>مستشفى ريسبكت</span></h1>
@@ -16,11 +15,10 @@
         <button class="btn btn-primary" onclick="login('admin')">مشرفين الصحة والإدارة</button>
         <button class="btn btn-ghost" onclick="login('viewer')">أفراد الصحة (عرض فقط)</button>
       </div>
-      <small class="hint">ملاحظة: كلمة المرور للمشرفين هي <b>20025</b></small>
+      <small class="hint">ملاحظة: كلمة المرور للمشرفين هي <b>955783</b></small>
     </div>
   </section>
 
-  <!-- الصفحة الرئيسية -->
   <main id="app" class="hidden">
     <header class="header">
       <div class="brand">
@@ -52,7 +50,6 @@
     <footer class="footer">© <span id="year"></span> مستشفى ريسبكت</footer>
   </main>
 
-  <!-- نافذة إضافة/تعديل -->
   <div id="modal" class="modal hidden" aria-hidden="true">
     <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button class="modal-close" aria-label="إغلاق" onclick="closeModal()">×</button>
@@ -86,10 +83,12 @@
     </div>
   </div>
 
-  <!-- عرض الصورة -->
   <div id="imageModal" class="modal hidden">
-    <button class="modal-close" aria-label="إغلاق" onclick="closeImageModal()">×</button>
+    <button id="imageClose" class="modal-close" aria-label="إغلاق" onclick="closeImageModal()">×</button>
     <img id="largeImage" src="" alt="صورة">
+    <div style="position:absolute;bottom:28px;left:50%;transform:translateX(-50%);">
+      <button id="removeBtn" class="btn btn-danger" onclick="confirmRemoveVisible()">إزالة</button>
+    </div>
   </div>
 
   <script src="script.js"></script>

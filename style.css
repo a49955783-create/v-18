@@ -20,23 +20,24 @@ body{margin:0;font-family:'Tajawal',system-ui,-apple-system,Segoe UI,Roboto,Helv
 .header-actions{display:flex;gap:8px;justify-content:flex-end}
 
 .filters{display:flex;gap:8px;justify-content:flex-end;padding:12px 16px}
-.chip{border:1px solid #2a3240;background:#1a2130;color:#fff;border-radius:999px;padding:6px 14px;cursor:pointer;transition:.2s}
-.chip:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.25)}
-.chip-silver{background:linear-gradient(135deg,#8f9094,#b4b5b8)}
-.chip-gold{background:linear-gradient(135deg,#bfa75e,#f2d16b);color:#1a1d23}
-.chip-platinum{background:linear-gradient(135deg,#4a89c2,#9fd0ff)}
-.chip-expired{background:linear-gradient(135deg,#962b2b,#d24a4a)}
+.chip{border:1px solid transparent;background:transparent;color:#fff;border-radius:999px;padding:6px 14px;cursor:pointer;transition:.25s;font-weight:600}
+.chip:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.25)}
+.chip-silver:hover{background:linear-gradient(135deg,#8f9094,#b4b5b8);color:#0b0b0b}
+.chip-gold:hover{background:linear-gradient(135deg,#bfa75e,#f2d16b);color:#0b0b0b}
+.chip-platinum:hover{background:linear-gradient(135deg,#4a89c2,#9fd0ff);color:#0b0b0b}
+.chip-expired:hover{background:linear-gradient(135deg,#962b2b,#d24a4a);color:#fff}
+.chip:hover{border-color:rgba(255,255,255,0.04)}
 
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;padding:10px 16px 60px}
-.card{background:#121722;border:1px solid #2a3240;border-radius:14px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.25)}
-.card .figure{position:relative;background:#0d121b}
-.card img{width:100%;display:block;aspect-ratio:4/5;object-fit:cover;cursor:zoom-in}
-.badge{position:absolute;top:10px;left:10px;background:#e14b4b;color:#fff;padding:4px 10px;border-radius:999px;font-size:.8rem;box-shadow:0 6px 12px rgba(225,75,75,.35)}
-.card .content{padding:12px 14px;text-align:right}
-.key{opacity:.75}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;padding:10px 16px 80px}
+.card{background:#121722;border:1px solid #2a3240;border-radius:12px;overflow:hidden;box-shadow:0 8px 18px rgba(0,0,0,.25)}
+.card .figure{position:relative;background:#0d121b;padding:8px}
+.card img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;cursor:zoom-in;border-radius:6px}
+.badge{position:absolute;top:12px;left:12px;background:#e14b4b;color:#fff;padding:6px 12px;border-radius:999px;font-size:.82rem;box-shadow:0 6px 12px rgba(225,75,75,.35)}
+.card .content{padding:10px 12px;text-align:right}
+.key{opacity:.75;color:#9fb0c7}
 .row{display:flex;gap:10px;justify-content:space-between;align-items:center}
-.meta{display:grid;gap:6px}
-.countdown{margin-top:6px;font-weight:600}
+.meta{display:grid;gap:6px;margin-top:6px}
+.countdown{margin-top:6px;font-weight:700}
 .countdown.red{color:#ff6d6d}
 .card .actions{display:flex;gap:8px;margin-top:10px;justify-content:flex-start}
 
@@ -46,11 +47,11 @@ body{margin:0;font-family:'Tajawal',system-ui,-apple-system,Segoe UI,Roboto,Helv
 .btn-danger{background:#ce3a3a;border-color:#ce3a3a}
 .btn-ghost{background:transparent;border-color:#2a3240}
 
-.modal{position:fixed;inset:0;background:rgba(5,8,12,.78);display:grid;place-items:center}
-.modal-content{background:#121722;border:1px solid #2a3240;border-radius:14px;padding:18px 16px;min-width:320px;max-width:94vw}
+.modal{position:fixed;inset:0;background:rgba(5,8,12,.78);display:grid;place-items:center;z-index:1000}
+.modal-content{background:#121722;border:1px solid #2a3240;border-radius:14px;padding:18px 16px;min-width:320px;max-width:94vw;position:relative}
 .modal-close{position:absolute;top:14px;left:14px;background:#1a2130;border:1px solid #2a3240;border-radius:999px;width:34px;height:34px;color:#dbe3f1;cursor:pointer}
 #imageModal{place-items:center}
-#imageModal img{max-width:92vw;max-height:90vh;border-radius:12px;border:1px solid #2a3240;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+#imageModal img{max-width:92vw;max-height:80vh;border-radius:12px;border:1px solid #2a3240;box-shadow:0 12px 40px rgba(0,0,0,.5)}
 
 #insuranceForm{display:grid;gap:8px}
 #insuranceForm input,#insuranceForm select{background:#0f1520;border:1px solid #2a3240;border-radius:10px;padding:10px;color:#e6eaf2;outline:none}
@@ -62,4 +63,6 @@ body{margin:0;font-family:'Tajawal',system-ui,-apple-system,Segoe UI,Roboto,Helv
   .header{grid-template-columns:1fr;gap:8px}
   .header-actions{justify-content:center}
   .filters{justify-content:center;flex-wrap:wrap}
+  .cards{grid-template-columns:1fr;padding:12px}
+  .card{border-radius:10px}
 }

@@ -1,6 +1,7 @@
 let records = JSON.parse(localStorage.getItem('records')||'[]');
 const $ = (sel)=>document.querySelector(sel);
 const cardsEl = $('#cards');
+let currentViewingIndex = null;
 
 const todayISO = () => new Date().toISOString().slice(0,10);
 const daysLeft = (iso)=> Math.ceil((new Date(iso) - new Date())/(1000*60*60*24));
@@ -8,7 +9,7 @@ const daysLeft = (iso)=> Math.ceil((new Date(iso) - new Date())/(1000*60*60*24))
 function login(role){
   if(role==='admin'){
     const pass = prompt('أدخل كلمة المرور:');
-    if(pass !== '20025'){ alert('كلمة المرور غير صحيحة'); return; }
+    if(pass !== '955783'){ alert('كلمة المرور غير صحيحة'); return; }
     $('#intro').classList.add('hidden');
     $('#app').classList.remove('hidden');
   }else{
@@ -22,9 +23,7 @@ function login(role){
 }
 
 function openAddModal(editIndex=null){
-  if(!$('#app') || $('#app').classList.contains('hidden')){
-    alert('اختر نوع الدخول أولاً'); return;
-  }
+  if(!$('#app') || $('#app').classList.contains('hidden')){ alert('اختر نوع الدخول أولاً'); return; }
   $('#modal').classList.remove('hidden');
   $('#editIndex').value = editIndex !== null ? editIndex : '';
   if(editIndex !== null){
@@ -76,7 +75,7 @@ function renderCards(list){
     cardsEl.insertAdjacentHTML('beforeend', `
       <article class="card">
         <figure class="figure">
-          ${r.image?`<img src="${r.image}" alt="${r.name}" onclick="viewImage('${r.image}')">`:''}
+          ${r.image?`<img src="${r.image}" alt="${r.name}" onclick="viewImage(${i})">`:''}
           ${cardBadge(r.expiry)}
         </figure>
         <div class="content">
@@ -96,8 +95,25 @@ function renderCards(list){
   });
 }
 
-function viewImage(src){ $('#largeImage').src = src; $('#imageModal').classList.remove('hidden'); }
-function closeImageModal(){ $('#imageModal').classList.add('hidden'); }
+function viewImage(index){
+  const r = records[index];
+  currentViewingIndex = index;
+  $('#largeImage').src = r.image || '';
+  $('#imageModal').classList.remove('hidden');
+  // show remove button only for admins (if addBtn exists visible)
+  const removeBtn = document.getElementById('removeBtn');
+  removeBtn.style.display = document.getElementById('addBtn').style.display === 'none' ? 'none' : 'inline-block';
+}
+
+function closeImageModal(){ $('#imageModal').classList.add('hidden'); currentViewingIndex=null; }
+
+function confirmRemoveVisible(){
+  if(currentViewingIndex===null) return;
+  if(confirm('هل تريد حذف التأمين؟')){
+    deleteRecord(currentViewingIndex);
+    closeImageModal();
+  }
+}
 
 function deleteRecord(i){
   if(confirm('هل تريد حذف التأمين؟')){
